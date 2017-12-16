@@ -12,32 +12,28 @@ else {
 	$parent=$xml->getName();
 	$name = $xml->attributes();
 	$child = $xml->children()->getName();
-	file_put_contents("testcases.json",'[{ "'.$parent.'": { "name":"'.$name.'","'.$child.'s":[');
-	//foreach($xml->testcase[0]->attributes() as $a => $b) {
-	//	$pd = $z.$a.'": "'.$b.'", ';
-	//	file_put_contents("testcases.json",$pd,FILE_APPEND);
-	//}
-	echo "\n";
+	
+	$teststeps=array();
+	$teststep=array();
+	$testcase=array("name"=>$name->__toString());
 	$count=$xml->count();
 	$i=0;
 	$z='"';
+	$arr=array();
 	do {
-		file_put_contents("testcases.json", "{",FILE_APPEND);
-		
-		foreach($xml->teststep[$i]->attributes() as $a => $b){
-			$str = $z.$a.'": "'.$b.'", ';
-			file_put_contents("testcases.json",json_encode($str),FILE_APPEND);
+		file_put_contents("testcases.json", "{",FILE_APPEND);	
+		foreach($xml->teststep[$i]->attributes() as $a => $b){			
+			$b=$b->__toString();
+			$arr[$a]=$b;			
+			$teststeps[$i]=$arr;
 		}
-		file_put_contents("testcases.json", "}\n",FILE_APPEND);
 		$i++;
 	} while($i<$count);
-	echo "\n";
-	file_put_contents("testcases.json","]}}]",FILE_APPEND);
-	//echo $currentxml;
-	//echo "\n";
-	//$json = json_encode($xml);
-	//echo "\n";
-	//file_put_contents("testcases.json", $json, FILE_APPEND);
+	$testcase["teststeps"]=$teststeps;
+	$testcases["testcase"]=$testcase;
+	$table=array(0=>$testcases);
+	file_put_contents("testcases.json",json_encode($table,JSON_HEX_QUOT));	
+
 }
 
 ?>
