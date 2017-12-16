@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<testcase name="First cases">
+<teststep name="step1" priority="minor" component="local">first step</teststep>
+<teststep name="step2" priority="normal" component="UI">second step</teststep>
+<teststep name="step3" priority="minor" component="server">third step</teststep>
+<teststep name="step4" priority="major" component="UI">fourth step</teststep>
+<teststep name="step5" priority="major" component="local">fifth step</teststep>
+<teststep name="step6" priority="normal" component="local">last step</teststep>
+</testcase>
+
+
