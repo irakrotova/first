@@ -7,6 +7,5 @@
 <teststep name="step4" priority="major" component="UI">fourth step</teststep>
 <teststep name="step5" priority="major" component="local">fifth step</teststep>
 <teststep name="step6" priority="normal" component="local">last step</teststep>
+<teststep name="step7" priority="major" component="local">additional step</teststep>
 </testcase>
-
-
